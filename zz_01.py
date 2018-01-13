@@ -9,7 +9,9 @@ Requests库请求返回的网页源码，但通过BeautifulSoup库解析得到�
 """
 
 """
-BeautifulSoup库解析器
+                                        BeautifulSoup库解析器
+                                        
+  解 析 器                 使 用 方 法                          优  点                       缺   点
 
                                                             Python的内置标准             Python2.7.3 or
 Python标准库       BeautifulSoup(markup, "html.parser")      库执行速度适中，文            Python3.2.2前的版本中
@@ -17,7 +19,17 @@ Python标准库       BeautifulSoup(markup, "html.parser")      库执行速度�
                                                         
 lxml HTML解析器    BeautifulSoup(markup, "lxml")             速度快                      需要安装C语言库
                                                             容错能力强
+                                                            
+                                                            速度快
+lxml XML解析器     BeautifulSoup(markup, ["lxml", "xml"])    唯一支持XML的                西药安装C语言库
+                  BeautifulSoup(markup, "xml")              解析器
                                                         
+                                                            最好的容错性
+                                                            以浏览器的方式解              速度慢
+html5lib          BeautifulSoup(markup, "html5lib")         析文档                       不依赖外部扩展
+                                                            生成HTML5格式的
+                                                            文档
+
 """
 
 
