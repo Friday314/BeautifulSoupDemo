@@ -43,6 +43,32 @@ _headers = {
 r = requests.get("http://bj.xiaozhu.com/", headers=_headers)
 
 # 对返回的结果进行解析
-soup = BeautifulSoup(r.text, 'html.parser')
+# soup = BeautifulSoup(r.text, 'html.parser')     # Python标准库
+soup = BeautifulSoup(r.text, 'lxml')        # BeautifulSoup库官方推荐使用lxml作为解析器，因为效率更高
 
 print(soup.prettify())
+
+
+""""
+
+解析得到的soup文档可以使用find()和find_all()方法及selector()方法定位需要的元素了
+
+语法：
+    find_all(tag, attibutes, recursive, text, limit, keywords)
+    find(tag, attibutes, recursive, text, keywords)
+    
+    soup.find_all('div', "item")    查找div标签，class="item"
+    soup.find_all('div', class='item')
+    soup.find_all('div', attrs={"class":"item"})    # attrs 参数定义一个字典参数来搜索包含特殊属性的tag
+    
+    find()方法与find_all()方法类似，只是find_all()方法返回的是文档中符合条件的所有tag，
+    是一个集合(class 'bs4.element.ResultSet'),find()方法返回的一个Tag(class 'bs4.element.Tag')
+    
+    
+    selector()方法
+    
+    soup.selector(#con_one_1 > span:nth-child(1) > a)   # 括号内容通过Chrome复制得到
+    
+    该方法类似与 中国 > 湖南省 > 长沙市，从大到小，提取需要的信息
+
+"""
